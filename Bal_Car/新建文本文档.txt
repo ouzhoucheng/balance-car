@@ -1,0 +1,42 @@
+gpio.c 
+//cubeMX生成的中断初始化代码在gpio初始化函数内，先开中断后初始化mpu导致卡死，应分理处理
+void EXTI_NVIC_init()
+{
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+}
+/*20/8/13 20：30*/
+
+tim.c
+//修改了定时器pwm的范围，适配例程7000
+htim1.Instance = TIM1;
+htim1.Init.Prescaler = 0;
+htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
+htim1.Init.Period = 7199;
+htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+htim1.Init.RepetitionCounter = 0;
+htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+/*20/8/13 21：12*/
+
+  sConfig.IC1Filter = 15;
+  sConfig.IC2Polarity = TIM_ICPOLARITY_RISING;
+  sConfig.IC2Selection = TIM_ICSELECTION_DIRECTTI;
+  sConfig.IC2Prescaler = TIM_ICPSC_DIV1;
+  sConfig.IC2Filter = 15;
+
+control.c
+//右编码器读出不稳，先用左编码器数据
+//    Encoder_Right = __HAL_TIM_GET_COUNTER(&htim5);
+//    Direction_Right = __HAL_TIM_IS_TIM_COUNTING_DOWN(&htim5);
+    Encoder_Left = __HAL_TIM_GET_COUNTER(&htim2);
+    Direction_Left = __HAL_TIM_IS_TIM_COUNTING_DOWN(&htim2);
+    Encoder_Right = __HAL_TIM_GET_COUNTER(&htim2);
+    Direction_Right = __HAL_TIM_IS_TIM_COUNTING_DOWN(&htim2);
+/*20/8/14 16:43*/
+
+//暂时勉强站立，小幅度晃动
+float balance_UP_KP=1000; 	 //PD parameters of car upright ring 900
+float balance_UP_KD=-2.3;      //
+float velocity_KP=90;       //PI parameters of car speed
+float velocity_KI=0.4;
+/*20/8/14 22：20*/
