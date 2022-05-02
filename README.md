@@ -3,12 +3,14 @@
 
 有很多单片机初学者都会选择把平衡小车作为第一件作品，但是制作过程中会碰到许多疑问，笔者也在学习过程中完成了一台摇摇晃晃的平衡小车，希望以自己的方式，向读者展示一台平衡小车诞生的全流程。
 
+![](BalanceCar.gif)
+
 文末获取工程文件及其他资料，建议结合keil工程阅读本文。
 
 ## 效果
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210210232358449.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NjE0MzE1Mg==,size_16,color_FFFFFF,t_70#pic_center)
-[video(video-w7TjWQih-1612971289599)(type-bilibili)(url-https://player.bilibili.com/player.html?aid=671699548)(image-https://ss.csdn.net/p?http://i0.hdslb.com/bfs/archive/8bb5fa088fce1ce4bb160b5d374812355e5210e9.jpg)(title-蓝牙平衡车)]
+
 
 
 # 组成
